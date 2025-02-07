@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'year_of_formation',
+        'city_id',
+         'section_id'
     ];
 
     /**
@@ -44,5 +47,21 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    // Relation avec la table sections
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
+
+    // Relation avec la table cities
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class);
     }
 }

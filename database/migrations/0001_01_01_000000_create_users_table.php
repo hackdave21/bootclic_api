@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\City;
+use App\Models\Section;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +19,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('year_of_formation')->nullable();
+            $table->string('phone_number');
+            $table->foreignIdFor(Section::class);
+            $table->foreignIdFor(City::class);
             $table->rememberToken();
             $table->timestamps();
         });
